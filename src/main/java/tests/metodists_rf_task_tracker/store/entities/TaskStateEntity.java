@@ -81,4 +81,52 @@ public class TaskStateEntity {
     public void setTasks(List<TaskEntity> tasks) {
         this.tasks = tasks;
     }
+
+
+    public static TaskStateEntityBuilder builder() {
+        return new TaskStateEntityBuilder();
+    }
+
+    public static class TaskStateEntityBuilder {
+        private Long id;
+        private String name;
+        private Long ordinal;
+        private Instant createdAt;
+        private String description;
+        private List<TaskEntity> tasks;
+
+        public TaskStateEntityBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public TaskStateEntityBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public TaskStateEntityBuilder ordinal(Long ordinal) {
+            this.ordinal = ordinal;
+            return this;
+        }
+
+        public TaskStateEntityBuilder createdAt(Instant createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public TaskStateEntityBuilder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public TaskStateEntityBuilder tasks(List<TaskEntity> tasks) {
+            this.tasks = tasks;
+            return this;
+        }
+
+        public TaskStateEntity build() {
+            return new TaskStateEntity(id, name, ordinal, createdAt, description, tasks);
+        }
+    }
 }
